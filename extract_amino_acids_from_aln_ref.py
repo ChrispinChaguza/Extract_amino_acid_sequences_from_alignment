@@ -39,10 +39,10 @@ def main():
     out_fhandle=open(output_file,"w")
 
     if verbose: 
-        print("GENOME_POS\tGENE_POS\tCODON_NUMBER\tCODON_START\tCODON_END\tREF_CODON\tALT_CODON\t\
+        print("SAMPLE_ID\tGENOME_POS\tCODON_NUMBER\tCODON_START\tCODON_END\tREF_CODON\tALT_CODON\t\
               REF_AMINO\tALT_AMINO\tGENE\tNOTE")
 
-    out_fhandle.write("GENOME_POS\tGENE_POS\tCODON_NUMBER\tCODON_START\tCODON_END\tREF_CODON\tALT_CODON\t\
+    out_fhandle.write("SAMPLE_ID\tGENOME_POS\tCODON_NUMBER\tCODON_START\tCODON_END\tREF_CODON\tALT_CODON\t\
                        REF_AMINO\tALT_AMINO\tGENE\tNOTE\n")
 
     for geneName,snpPos1 in snpPositions:
@@ -84,7 +84,7 @@ def main():
                                 else:
                                     snpPos=end+snpPos1*3
 
-                                codonNum = snpPos
+                                codonNum = snpPos1
                                 codonStart = snpPos-3
                                 codonEnd = snpPos
                                 codonRef = str(annotFile.seq[codonStart:codonEnd])
@@ -96,11 +96,11 @@ def main():
                                 SNP = str(seqRec[codonStart:codonEnd].translate())
 
                                 if verbose: 
-                                    print(str(snpPos)+"\t"+str(snpPos1)+"\t"+str(codonNum)+"\t"+str(codonStart)+"\t"+str(codonEnd)+"\t"+\
+                                    print(str(seqRec.id)+"\t"+str(snpPos)+"\t"+str(codonNum)+"\t"+str(codonStart)+"\t"+str(codonEnd)+"\t"+\
                                           str(codonRef)+"\t"+str(codonAlt)+"\t"+str(aminoRef)+"\t"+str(aminoAlt)+"\t"+\
                                           str(gene)+"\t"+str(note))
 
-                                out_fhandle.write(str(snpPos)+"\t"+str(snpPos1)+"\t"+str(codonNum)+"\t"+str(codonStart)+"\t"+\
+                                out_fhandle.write(str(seqRec.id)+"\t"+str(snpPos)+"\t"+str(codonNum)+"\t"+str(codonStart)+"\t"+\
                                                   str(codonEnd)+"\t"+str(codonRef)+"\t"+str(codonAlt)+"\t"+str(aminoRef)+"\t"+\
                                                   str(aminoAlt)+"\t"+str(gene)+"\t"+str(note)+"\n")
 
