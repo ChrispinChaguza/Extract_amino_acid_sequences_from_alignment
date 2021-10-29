@@ -18,7 +18,7 @@ def main():
     options.add_argument('-r','--reference',action='store',required=True,nargs=1,
         metavar='input_reference',dest='input_reference',help='Input file containing locations to the reference genome (Genbank) to be used for annotation')
     options.add_argument('-c','--aa_position',action='store',required=True,nargs=1,
-        metavar='amino_acid_position',dest='amino_acid_position',help='Tab-delimited input file containing the gene name and amino acid position on each line (no header)')
+        metavar='amino_acid_position',dest='amino_acid_position',help='Tab-delimited input file containing the gene name (1st column) and amino acid position on each line (no header)')
     options.add_argument('-o','--output',action='store',required=True,nargs=1,
         metavar='output_file',dest='output_file',help='Output file containing the extracted nucleotide/amino acid sequences')
     options.add_argument('-v','--verbose',action='store_true',required=False,
